@@ -1,0 +1,20 @@
+body {
+    margin: 20px 100px;
+    min-width: 200px;
+}
+
+h3, h5 {
+    background-color: #78FA89;
+    padding: 8px;
+    border: 1px solid #AAA;
+    border-radius: 3px;
+}
+
+p {
+    background-color: #FAFAFA;
+    padding: 4px;
+    border: 1px solid #AAA;
+    border-radius: 3px;
+    font-size: 14px;
+}
+

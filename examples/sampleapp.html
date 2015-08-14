@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tags - AngularJS reusable UI component</title>
+        <meta charset="UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+
+        <script src="../dist/debug/vstags-0.0.1.js" type="text/javascript"></script>
+        <link href="../dist/debug/vstags-0.0.1.css" rel="stylesheet" type="text/css"/>
+
+        <script src="sampleapp.js"></script>
+        <link href="sampleapp.css" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body ng-app="sampleapp">
+        <h3>Tags - AngularJS reusable UI component</h3>
+
+        <div ng-controller="samplectrl">
+            <vstags ng-model="selectedTags"></vstags>
+        </div>
+
+    </body>    
+
+</html>

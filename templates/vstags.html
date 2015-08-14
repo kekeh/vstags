@@ -1,0 +1,12 @@
+<div class="vstags">
+    <div class="vstagsgroup">
+        <div class="vstagsarea">
+            <div class="vsselectedtags" ng-repeat="item in selectedTags track by $index">
+                <div class="vstagtext">{{item}}</div>
+                <span class="vsiconcross icon icon-cross" ng-click="removeItem(item)"></span>
+            </div>
+        </div>
+        <span class="vsiconplus icon" ng-class="{'icon-plus':!showInput,'icon-check':showInput}" ng-click="addNewItem()"></span>
+    </div>
+    <input class="vstagsinput" type="text" input-focus ng-show="showInput" ng-model="inputTxt" ng-keydown="keyDown($event)"/>
+</div>
