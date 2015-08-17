@@ -11,8 +11,8 @@
 
     <!-- vstags demo needs these begin -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
-    <script src="demo/vstags-0.0.1.js" type="text/javascript"></script>
-    <link href="demo/vstags-0.0.1.css" rel="stylesheet" type="text/css"/>
+    <script src="demo/vstags-0.0.2.js" type="text/javascript"></script>
+    <link href="demo/vstags-0.0.2.css" rel="stylesheet" type="text/css"/>
     <script src="demo/sampleapp.js"></script>
     <!-- vstags demo needs these end -->
 
@@ -50,7 +50,7 @@
             <p>Lightweight tags component.</p>
 
             <div ng-controller="samplectrl" style="margin-bottom:30px">
-                <vstags ng-model="selectedTags"></vstags>
+                <vstags ng-model="selectedTags" on-load-tags-fn="loadTags(filter)"></vstags>
             </div>
 
             <p>See my other components from <a id="otherdemoslink" class="anchor"
