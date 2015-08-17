@@ -2,7 +2,7 @@
   "author": "kekeh",
   "description": "Tags - AngularJS reusable UI component",
   "name": "vstags",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "homepage": "http://kekeh.github.io/vstags",
   "dependencies": {

@@ -1,4 +1,4 @@
-# vstags v. 0.0.1
+# vstags v. 0.0.2
 
 **Tags - AngularJS reusable UI component**
 
@@ -7,10 +7,10 @@ Simple AngularJS directive which implements the tags. Depends on only the Angula
 
 ## Usage
 
-* include the **vstags-0.0.1.min.js** and the **vstags-0.0.1.min.css** files into your project. See the **Build project** and the **Installation** chapters below.
+* include the **vstags-0.0.2.min.js** and the **vstags-0.0.2.min.css** files into your project. See the **Build project** and the **Installation** chapters below.
 ```html
-<script src="vstags-0.0.1.min.js"></script>
-<link href="vstags-0.0.1.min.css" rel="stylesheet" type="text/css">
+<script src="vstags-0.0.2.min.js"></script>
+<link href="vstags-0.0.2.min.css" rel="stylesheet" type="text/css">
 ```
 * inject the **vstags** module into your application module.
 ```js
@@ -23,7 +23,7 @@ angular.module('sampleapp', ['vstags']);
 ```html
 <div ng-app="sampleapp" ng-controller="sampleappctrl">
 
-    <vstags ng-model="selectedTags"></vstags>
+    <vstags ng-model="selectedTags" on-load-tags-fn="loadTags(filter)"></vstags>
     
 </div>
 ```
@@ -37,13 +37,14 @@ angular.module('sampleapp', ['vstags']);
 ### Attributes
 | Attribute | Description | Mandatory | 
 | :------------ |:---------------|:---------------:|
-| ng-model | vstags selected tags - array of strings. | yes |
+| ng-model | selected tags of the component - array of strings. | yes |
+| on-load-tags-fn | callback function to load tags - function must be synchronously return an array of strings. Called when the user type a text to the tag input field. | no |
 
 
 ### Javascript example
 ```js
 var sampleapp = angular.module('sampleapp', ['vstags']);
-sampleapp.controller('sampleappctrl', function ($scope) {
+sampleapp.controller('sampleappctrl', function ($scope, $filter) {
 
     // Initially the Item #2 and the Item #4 tags are selected
     $scope.selectedTags = ['Item #2', 'Item #4'];
@@ -54,6 +55,11 @@ sampleapp.controller('sampleappctrl', function ($scope) {
             console.log('PARENT - watchCollection(): Selected item(s): ', tags);
         }
     });
+    
+    // callback - loads and filter tag items
+    $scope.loadTags = function (filter) {
+        return $filter('filter')(loadedTags, filter);
+    };
 ```
 
 
