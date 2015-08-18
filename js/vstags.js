@@ -2,10 +2,10 @@ angular.module('vstags', [])
     .constant('vstagsConf', {
         INPUT_DEBOUNCE: 500,
         INPUT_FOCUS_EVENT: 'vstags.ife',
-        SEL_TAGS_TXT: 'selected tag(s)',
+        SEL_TAGS_TXT: 'tag(s)',
         TYPE_TAG_TXT: 'Type tag here...'
     })
-    .directive('vstags', function () {
+    .directive('vstags', ['$window', function ($window) {
         return {
             restrict: 'EA',
             templateUrl: 'templates/vstags.html',
@@ -23,7 +23,8 @@ angular.module('vstags', [])
             link: function (scope, element, attrs) {
                 scope.selectedTags = [], scope.loadedTags = [];
                 scope.showInput = false, scope.showOverlay = false;
-                var inputTxtWatch = null;
+                var tagsArea = tagsArea = angular.element(element[0].querySelector('.vstagsarea'));
+                var window = angular.element($window);
 
                 scope.addNewItem = function () {
                     scope.showInput = !scope.showInput;
@@ -62,10 +63,15 @@ angular.module('vstags', [])
                     scope.showOverlay = false;
                 };
 
-                scope.$on('$destroy', function () {
-                    if (inputTxtWatch !== null) {
-                        inputTxtWatch();
-                    }
+                scope.$watch(function () {
+                    return tagsArea[0].scrollHeight;
+                },
+                function (val) {
+                    scope.showTagsBtn = val > 34;
+                });
+
+                window.on('resize', function () {
+                    scope.$apply();
                 });
 
                 function inputTxtWatchFn(newVal, oldVal) {
@@ -84,8 +90,8 @@ angular.module('vstags', [])
                 }
 
                 function init() {
-                    if(attrs.onLoadTagsFn !== undefined) {
-                        inputTxtWatch = scope.$watch('inputTxt', inputTxtWatchFn);
+                    if (attrs.onLoadTagsFn !== undefined) {
+                        scope.$watch('inputTxt', inputTxtWatchFn);
                     }
                     scope.selectedTags = scope.ngModel;
                 }
@@ -93,7 +99,7 @@ angular.module('vstags', [])
                 init();
             }
         };
-    })
+    }])
 
 /**
  * @ngdoc object

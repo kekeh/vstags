@@ -22,6 +22,7 @@
 .vstags .vstagsoverlaytitle {
     border: 1px solid #AAA;
     border-radius: 2px;
+    line-height: 1;
 }
 
 .vstags .vstagsgroup {
@@ -58,6 +59,14 @@
     -moz-user-select: none;
 }
 
+.vstags .vstagsbtn {
+    background: #FAFAFA;
+    background-image: -webkit-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
+    background-image: -moz-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
+    background-image: linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
+}
+
+.vstags .vstagsbtn:focus,
 .vstags .vstagsbtn:hover {
     background: #ADD8E6;
 }
@@ -71,14 +80,11 @@
     line-height: 28px;
 }
 
-.vstags .vstagsbtn,
 .vstags .vsselectedtags {
-    background: #FAFAFA;
-    background-image: -webkit-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
-    background-image: -moz-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
-    background-image: -o-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
-    background-image: -ms-linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
-    background-image: linear-gradient(#F0F0F0 30%, #AEC2E1 100%);
+    background: #EEE;
+    background-image: -webkit-linear-gradient(#FAFAFA 40%, #DDD 100%);
+    background-image: -moz-linear-gradient(#FAFAFA 40%, #DDD 100%);
+    background-image: linear-gradient(#FAFAFA 40%, #DDD 100%);
 }
 
 .vstags .vstagtext {
@@ -119,6 +125,7 @@
     margin-bottom: 0;
 }
 
+.vstags .vstagsloaderitem:focus,
 .vstags .vstagsloaderitem:hover {
     background-color: #90EE90;
 }
@@ -141,7 +148,7 @@
 
 .vstags .vstagsoverlaytitle {
     display: table;
-    padding: 2px;
+    padding: 2px 2px 2px 4px;
     background-color: #FAFAFA;
 }
 
@@ -177,8 +184,12 @@
     cursor: pointer;
 }
 
+.vstags .vsiconoverlaycross:focus,
+.vstags .vsiconoverlaycross:hover,
+.vstags .vsiconcross:focus,
 .vstags .vsiconcross:hover {
     color: #990000;
+    outline: none;
 }
 
 .vstags input[type=text]::-ms-clear {

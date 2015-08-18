@@ -5,14 +5,14 @@
             <div ng-include="'tagsrepeat.html'"></div>
         </div>
         <span class="vsbtncontainer">
-            <button class="vstagsbtn" ng-click="showOverlay=true" ng-show="selectedTags.length>0"><span class="icon icon-selections"></span></button>
+            <button class="vstagsbtn" ng-click="showOverlay=true" ng-show="showTagsBtn"><span class="icon icon-selections"></span></button>
             <button class="vstagsbtn" ng-click="addNewItem()"><span class="icon" ng-class="{'icon-plus':!showInput,'icon-check':showInput}"></span></button>
-            <span class="vstagsselectioncounttxt" ng-if="selectedTags.length > 0" ng-click="showOverlay=true">{{selectedTags.length}}</span>
+            <span class="vstagsselectioncounttxt" ng-if="showTagsBtn" ng-click="showOverlay=true">{{selectedTags.length}}</span>
         </span>
     </div>
     <input class="vstagsinput" type="text" placeholder="{{conf.TYPE_TAG_TXT}}" input-focus ng-show="showInput" ng-model="inputTxt" ng-model-options="{debounce:conf.INPUT_DEBOUNCE}" ng-keydown="keyDown($event)"/>
     <div class="vstagsloader" ng-show="showInput&&inputTxt!==''&&loadedTags.length>0">
-        <div class="vstagsloaderitem" ng-repeat="item in loadedTags track by $index" ng-click="itemClicked(item)">
+        <div class="vstagsloaderitem" ng-repeat="item in loadedTags track by $index" ng-click="itemClicked(item)" ng-keydown="$event.which===13?itemClicked(item):null" tabindex="0">
             <span class="vstagsloaderitemtxt">{{item}}</span>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="vstagsoverlay" ng-mouseleave="closeOverlay()">
             <div class="vstagsoverlaytitle">
                 <span class="vstagsoverlaytitletxt">{{selectedTags.length}} {{conf.SEL_TAGS_TXT}}</span>
-                <span class="icon icon-cross vsiconoverlaycross" ng-click="closeOverlay()"></span>
+                <span class="icon icon-cross vsiconoverlaycross" ng-click="closeOverlay()" ng-keydown="$event.which===13?closeOverlay():null" tabindex="0"></span>
             </div>
             <div ng-include="'tagsrepeat.html'"></div>
         </div>
@@ -28,7 +28,7 @@
     <script type="text/ng-template" id="tagsrepeat.html">
         <div class="vsselectedtags" ng-repeat="item in selectedTags track by $index">
             <div class="vstagtext">{{item}}</div>
-            <span class="vsiconcross icon icon-cross" ng-click="removeItem(item)"></span>
+            <span class="vsiconcross icon icon-cross" ng-click="removeItem(item)" ng-keydown="$event.which===13?removeItem(item):null" tabindex="0"></span>
         </div>
     </script>
 </div>

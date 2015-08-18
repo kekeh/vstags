@@ -33,7 +33,7 @@ sampleapp.controller('samplectrl', function ($scope, $filter, $http) {
             $http.get('./tags.json').success(function (tags) {
                 loadedTags = tags;
             });
-        }, 20);
+        }, 10);
     }
 
     getTagsFromFile();

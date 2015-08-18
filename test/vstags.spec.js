@@ -36,8 +36,8 @@ describe('vstags', function () {
         expect(elm[0].querySelectorAll('.vsiconcross').length).toBe(2);
     });
 
-    it('is vsiconplus', function () {
-        expect(elm[0].querySelectorAll('.vsiconplus').length).toBe(1);
+    it('is icon-plus', function () {
+        expect(elm[0].querySelectorAll('.icon-plus').length).toBe(1);
     });
 
     it('is vstagsinput', function () {
@@ -48,6 +48,10 @@ describe('vstags', function () {
         var tElem = elm[0].querySelectorAll('.vstagtext');
         expect(angular.element(tElem[0]).text()).toEqual('Item #2');
         expect(angular.element(tElem[1]).text()).toEqual('Item #4');
+    });
+
+    it('is vstagsloader', function () {
+        expect(elm[0].querySelectorAll('.vstagsloader').length).toBe(1);
     });
 
 });
