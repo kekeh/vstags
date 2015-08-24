@@ -1,0 +1,4 @@
+<div class="vsselectedtags" ng-repeat="item in selectedTags track by $index">
+    <span class="vstagtext">{{item}}</span>
+    <span class="vsiconcross icon icon-cross" ng-click="removeItem(item)" ng-keydown="$event.which===13?removeItem(item):null" tabindex="0"></span>
+</div>

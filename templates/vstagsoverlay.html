@@ -1,0 +1,7 @@
+<div class="vstagsoverlay" ng-mouseleave="closeOverlay()">
+    <div class="vstagsoverlaytitle">
+        <span class="vstagsoverlaytitletxt">{{selectedTags.length}} {{conf.SEL_TAGS_TXT}}</span>
+        <span class="icon icon-cross vsiconoverlaycross" ng-click="closeOverlay()" ng-keydown="$event.which===13?closeOverlay():null" tabindex="0"></span>
+    </div>
+    <div ng-include="'templates/vstagsrepeat.html'"></div>
+</div>

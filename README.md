@@ -1,4 +1,4 @@
-# vstags v. 0.0.3
+# vstags v. 0.0.4
 
 **Tags - AngularJS reusable UI component**
 
@@ -7,10 +7,10 @@ Simple AngularJS directive which implements the tags. Depends on only the Angula
 
 ## Usage
 
-* include the **vstags-0.0.3.min.js** and the **vstags-0.0.3.min.css** files into your project. See the **Build project** and the **Installation** chapters below.
+* include the **vstags-0.0.4.min.js** and the **vstags-0.0.4.min.css** files into your project. See the **Build project** and the **Installation** chapters below.
 ```html
-<script src="vstags-0.0.3.min.js"></script>
-<link href="vstags-0.0.3.min.css" rel="stylesheet" type="text/css">
+<script src="vstags-0.0.4.min.js"></script>
+<link href="vstags-0.0.4.min.css" rel="stylesheet" type="text/css">
 ```
 * inject the **vstags** module into your application module.
 ```js
@@ -88,7 +88,7 @@ bower install vstags
 * Opera 28.0
 * Mobile Safari 8
 
-## Licence
+## License
 * License: MIT
 
 ## Author

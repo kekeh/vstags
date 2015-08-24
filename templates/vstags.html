@@ -1,8 +1,8 @@
 <div class="vstags">
     <div class="vstagsgroup">
-        <div ng-if="showOverlay" ng-include="'tagsoverlay.html'"></div>
+        <div ng-if="showOverlay" ng-include="'templates/vstagsoverlay.html'"></div>
         <div class="vstagsarea">
-            <div ng-include="'tagsrepeat.html'"></div>
+            <div ng-include="'templates/vstagsrepeat.html'"></div>
         </div>
         <span class="vsbtncontainer">
             <button class="vstagsbtn" ng-click="showOverlay=true" ng-show="showTagsBtn"><span class="icon icon-selections"></span></button>
@@ -16,19 +16,4 @@
             <span class="vstagsloaderitemtxt">{{item}}</span>
         </div>
     </div>
-    <script type="text/ng-template" id="tagsoverlay.html">
-        <div class="vstagsoverlay" ng-mouseleave="closeOverlay()">
-            <div class="vstagsoverlaytitle">
-                <span class="vstagsoverlaytitletxt">{{selectedTags.length}} {{conf.SEL_TAGS_TXT}}</span>
-                <span class="icon icon-cross vsiconoverlaycross" ng-click="closeOverlay()" ng-keydown="$event.which===13?closeOverlay():null" tabindex="0"></span>
-            </div>
-            <div ng-include="'tagsrepeat.html'"></div>
-        </div>
-    </script>
-    <script type="text/ng-template" id="tagsrepeat.html">
-        <div class="vsselectedtags" ng-repeat="item in selectedTags track by $index">
-            <div class="vstagtext">{{item}}</div>
-            <span class="vsiconcross icon icon-cross" ng-click="removeItem(item)" ng-keydown="$event.which===13?removeItem(item):null" tabindex="0"></span>
-        </div>
-    </script>
 </div>
