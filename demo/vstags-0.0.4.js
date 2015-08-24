@@ -1,53 +1,22 @@
 /* 
 *  Name: vstags 
 *  Description: Tags - AngularJS reusable UI component 
-*  Version: 0.0.3 
+*  Version: 0.0.4 
 *  Author: kekeh 
 *  Homepage: http://kekeh.github.io/vstags 
 *  License: MIT 
-*  Date: 2015-08-18 
+*  Date: 2015-08-24 
 */ 
-angular.module('template-vstags-0.0.3.html', ['templates/vstags.html']);
-
-angular.module("templates/vstags.html", []).run(["$templateCache", function($templateCache) {
+angular.module('template-vstags-0.0.4.html', []).run(['$templateCache', function($templateCache) {
   $templateCache.put("templates/vstags.html",
-    "<div class=\"vstags\">\n" +
-    "    <div class=\"vstagsgroup\">\n" +
-    "        <div ng-if=\"showOverlay\" ng-include=\"'tagsoverlay.html'\"></div>\n" +
-    "        <div class=\"vstagsarea\">\n" +
-    "            <div ng-include=\"'tagsrepeat.html'\"></div>\n" +
-    "        </div>\n" +
-    "        <span class=\"vsbtncontainer\">\n" +
-    "            <button class=\"vstagsbtn\" ng-click=\"showOverlay=true\" ng-show=\"showTagsBtn\"><span class=\"icon icon-selections\"></span></button>\n" +
-    "            <button class=\"vstagsbtn\" ng-click=\"addNewItem()\"><span class=\"icon\" ng-class=\"{'icon-plus':!showInput,'icon-check':showInput}\"></span></button>\n" +
-    "            <span class=\"vstagsselectioncounttxt\" ng-if=\"showTagsBtn\" ng-click=\"showOverlay=true\">{{selectedTags.length}}</span>\n" +
-    "        </span>\n" +
-    "    </div>\n" +
-    "    <input class=\"vstagsinput\" type=\"text\" placeholder=\"{{conf.TYPE_TAG_TXT}}\" input-focus ng-show=\"showInput\" ng-model=\"inputTxt\" ng-model-options=\"{debounce:conf.INPUT_DEBOUNCE}\" ng-keydown=\"keyDown($event)\"/>\n" +
-    "    <div class=\"vstagsloader\" ng-show=\"showInput&&inputTxt!==''&&loadedTags.length>0\">\n" +
-    "        <div class=\"vstagsloaderitem\" ng-repeat=\"item in loadedTags track by $index\" ng-click=\"itemClicked(item)\" ng-keydown=\"$event.which===13?itemClicked(item):null\" tabindex=\"0\">\n" +
-    "            <span class=\"vstagsloaderitemtxt\">{{item}}</span>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <script type=\"text/ng-template\" id=\"tagsoverlay.html\">\n" +
-    "        <div class=\"vstagsoverlay\" ng-mouseleave=\"closeOverlay()\">\n" +
-    "            <div class=\"vstagsoverlaytitle\">\n" +
-    "                <span class=\"vstagsoverlaytitletxt\">{{selectedTags.length}} {{conf.SEL_TAGS_TXT}}</span>\n" +
-    "                <span class=\"icon icon-cross vsiconoverlaycross\" ng-click=\"closeOverlay()\" ng-keydown=\"$event.which===13?closeOverlay():null\" tabindex=\"0\"></span>\n" +
-    "            </div>\n" +
-    "            <div ng-include=\"'tagsrepeat.html'\"></div>\n" +
-    "        </div>\n" +
-    "    </script>\n" +
-    "    <script type=\"text/ng-template\" id=\"tagsrepeat.html\">\n" +
-    "        <div class=\"vsselectedtags\" ng-repeat=\"item in selectedTags track by $index\">\n" +
-    "            <div class=\"vstagtext\">{{item}}</div>\n" +
-    "            <span class=\"vsiconcross icon icon-cross\" ng-click=\"removeItem(item)\" ng-keydown=\"$event.which===13?removeItem(item):null\" tabindex=\"0\"></span>\n" +
-    "        </div>\n" +
-    "    </script>\n" +
-    "</div>");
+    "<div class=vstags><div class=vstagsgroup><div ng-if=showOverlay ng-include=\"'templates/vstagsoverlay.html'\"></div><div class=vstagsarea><div ng-include=\"'templates/vstagsrepeat.html'\"></div></div><span class=vsbtncontainer><button class=vstagsbtn ng-click=\"showOverlay=true\" ng-show=showTagsBtn><span class=\"icon icon-selections\"></span></button> <button class=vstagsbtn ng-click=addNewItem()><span class=icon ng-class=\"{'icon-plus':!showInput,'icon-check':showInput}\"></span></button> <span class=vstagsselectioncounttxt ng-if=showTagsBtn ng-click=\"showOverlay=true\">{{selectedTags.length}}</span></span></div><input class=vstagsinput placeholder={{conf.TYPE_TAG_TXT}} input-focus ng-show=showInput ng-model=inputTxt ng-model-options={debounce:conf.INPUT_DEBOUNCE} ng-keydown=\"keyDown($event)\"><div class=vstagsloader ng-show=\"showInput&&inputTxt!==''&&loadedTags.length>0\"><div class=vstagsloaderitem ng-repeat=\"item in loadedTags track by $index\" ng-click=itemClicked(item) ng-keydown=\"$event.which===13?itemClicked(item):null\" tabindex=0><span class=vstagsloaderitemtxt>{{item}}</span></div></div></div>");
+  $templateCache.put("templates/vstagsoverlay.html",
+    "<div class=vstagsoverlay ng-mouseleave=closeOverlay()><div class=vstagsoverlaytitle><span class=vstagsoverlaytitletxt>{{selectedTags.length}} {{conf.SEL_TAGS_TXT}}</span> <span class=\"icon icon-cross vsiconoverlaycross\" ng-click=closeOverlay() ng-keydown=\"$event.which===13?closeOverlay():null\" tabindex=0></span></div><div ng-include=\"'templates/vstagsrepeat.html'\"></div></div>");
+  $templateCache.put("templates/vstagsrepeat.html",
+    "<div class=vsselectedtags ng-repeat=\"item in selectedTags track by $index\"><span class=vstagtext>{{item}}</span> <span class=\"vsiconcross icon icon-cross\" ng-click=removeItem(item) ng-keydown=\"$event.which===13?removeItem(item):null\" tabindex=0></span></div>");
 }]);
 
-angular.module('vstags', ["template-vstags-0.0.3.html"])
+angular.module('vstags', ["template-vstags-0.0.4.html"])
     .constant('vstagsConf', {
         INPUT_DEBOUNCE: 500,
         INPUT_FOCUS_EVENT: 'vstags.ife',
